@@ -16,14 +16,20 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage';
 import NotFoundPage from 'containers/NotFoundPage';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
+`;
 
 export default function App() {
   return (
-    <div>
+    <Wrapper>
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route component={NotFoundPage} />
       </Switch>
-    </div>
+    </Wrapper>
   );
 }

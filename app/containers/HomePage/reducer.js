@@ -15,9 +15,9 @@ export default (state = initialState, action) => {
         action.payload,
       ];
     case CLEAR_MESSAGES:
-      return {...initialState};
+      return { ...initialState };
     default:
       return state;
   }
-}
+};
 

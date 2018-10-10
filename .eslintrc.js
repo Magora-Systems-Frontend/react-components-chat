@@ -1,7 +1,7 @@
 module.exports = {
   parser: 'babel-eslint',
   extends: ['airbnb'],
-  plugins: ['redux-saga', 'react', 'jsx-a11y'],
+  plugins: ['react', 'jsx-a11y'],
   env: {
     browser: true,
     node: true,
@@ -54,8 +54,6 @@ module.exports = {
     'react/require-extension': 0,
     'react/self-closing-comp': 0,
     'react/sort-comp': 0,
-    'redux-saga/no-yield-in-race': 2,
-    'redux-saga/yield-effects': 2,
     'require-yield': 0,
   },
   settings: {

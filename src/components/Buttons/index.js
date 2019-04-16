@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { defaultBorderRadius, mainButtonColor, secondaryButtonColor } from '../_common/styled';
 
 export const IconButton = ({ type, color }) => {
   switch (type) {
@@ -67,6 +68,28 @@ export const IconButton = ({ type, color }) => {
           </SVG>
         </Button>
       );
+
+    case 'search':
+      return (
+        <Button search>
+          <SVG
+            color={color}
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            className="feather feather-search"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </SVG>
+        </Button>
+      );
+
     default:
       return null;
   }
@@ -78,7 +101,7 @@ IconButton.propTypes = {
 };
 
 IconButton.defaultProps = {
-  color: '#64B5F6',
+  color: mainButtonColor,
 };
 
 const SVG = styled.svg`
@@ -92,9 +115,11 @@ const Button = styled.button`
   justify-content: center;
   align-items: center;
   padding: 0 1.5rem;
-  font-size: 1.5rem;
-  border: 0.1rem solid #64b5f6;
-  border-radius: 0.7rem;
+  font-size: inherit;
+  border: 0.1rem solid ${mainButtonColor};
+  border-radius: ${defaultBorderRadius};
+  border-top-left-radius: ${props => props.search && 0};
+  border-bottom-left-radius: ${props => props.search && 0};
   color: #64b5f6;
   background: transparent;
   cursor: pointer;
@@ -104,7 +129,7 @@ const Button = styled.button`
   }
 
   &:hover {
-    background: #64b5f6;
+    background: ${mainButtonColor};
     ${SVG} {
       stroke: white;
     }
@@ -113,11 +138,11 @@ const Button = styled.button`
 export const FilledButton = styled(Button)`
   padding: 0 3rem;
   margin-left: auto;
-  background: #64b5f6;
+  background: ${mainButtonColor};
   color: white;
   text-transform: uppercase;
   border: none;
   &:hover {
-    background: #1565c0;
+    background: ${secondaryButtonColor};
   }
 `;

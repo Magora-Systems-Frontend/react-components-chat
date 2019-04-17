@@ -1,56 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { MessageDisplay } from '../Message';
-import avatar from '../../images/avatar.png';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const MessagesAreaDisplay = () => (
-  <MessagesWrapper>
-    <MessageDisplay incoming avatar={avatar}>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi qui minima ex vitae quas
-      deserunt molestias, quasi quos molestiae ipsum cumque unde laboriosam vel consequuntur.
-    </MessageDisplay>
-    <MessageDisplay avatar={avatar}>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum illo, laboriosam laborum
-      et fugit mollitia non dicta excepturi aliquid quos eos tempore itaque nemo voluptates nihil
-      officia exercitationem repellat vero facilis dolores animi?
-    </MessageDisplay>
-    <MessageDisplay incoming avatar={avatar}>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae dolorem possimus
-      consequatur! Ex eaque, perferendis dolorum sapiente adipisci, placeat tempore dolor
-      temporibus, ab deserunt praesentium eos rerum harum necessitatibus quis?
-    </MessageDisplay>
-    <MessageDisplay incoming avatar={avatar}>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae dolorem possimus
-      consequatur! Ex eaque, perferendis dolorum sapiente adipisci, placeat tempore dolor
-      temporibus, ab deserunt praesentium eos rerum harum necessitatibus quis?
-    </MessageDisplay>
-    <MessageDisplay incoming avatar={avatar}>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae dolorem possimus
-      consequatur! Ex eaque, perferendis dolorum sapiente adipisci, placeat tempore dolor
-      temporibus, ab deserunt praesentium eos rerum harum necessitatibus quis?
-    </MessageDisplay>
-    <MessageDisplay avatar={avatar}>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum illo, laboriosam laborum
-      et fugit mollitia non dicta excepturi aliquid quos eos tempore itaque nemo voluptates nihil
-      officia exercitationem repellat vero facilis dolores animi?
-    </MessageDisplay>
-    <MessageDisplay avatar={avatar}>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum illo, laboriosam laborum
-      et fugit mollitia non dicta excepturi aliquid quos eos tempore itaque nemo voluptates nihil
-      officia exercitationem repellat vero facilis dolores animi?
-    </MessageDisplay>
-    <MessageDisplay incoming avatar={avatar}>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae dolorem possimus
-      consequatur! Ex eaque, perferendis dolorum sapiente adipisci, placeat tempore dolor
-      temporibus, ab deserunt praesentium eos rerum harum necessitatibus quis?
-    </MessageDisplay>
-  </MessagesWrapper>
-);
+class MessagesAreaDisplay extends Component {
+  static propTypes = {
+    messages: PropTypes.array,
+  };
 
-export default MessagesAreaDisplay;
+  render() {
+    const { messages } = this.props;
+    const messagesList = messages.map(item => (
+      <MessageDisplay
+        incoming={item.incoming}
+        avatar={item.avatar}
+        name={item.name}
+        time={item.time}
+        key={item.id}
+      >
+        {item.text}
+      </MessageDisplay>
+    ));
+    return (
+      <MessagesWrapper>
+        {messagesList}
+      </MessagesWrapper>
+    )
+  }
+}
+
 
 const MessagesWrapper = styled.div`
   padding: 0 3rem;
   height: 70vh;
   overflow-y: scroll;
 `;
+
+const mapStateToProps = state => ({
+  messages: state.messages,
+});
+
+export default connect(mapStateToProps, null)(MessagesAreaDisplay);

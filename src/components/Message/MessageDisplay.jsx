@@ -4,19 +4,19 @@ import PropTypes from 'prop-types';
 import {
   defaultBorder,
   defaultBorderRadius,
-  mainBlueColor,
+  mainButtonColor,
   borderColor,
   lightGrayColor,
   mediumGrayColor,
 } from '../_common/styled';
 
-const MessageDisplay = ({ children, incoming, avatar }) => (
+const MessageDisplay = ({ children, incoming, avatar, time, name }) => (
   <MessageWrapper isIncoming={incoming}>
     <MessageAvatar src={avatar} alt="" />
     <MessageBody>
       <MessageTitle>
-        <MessageTitleName>Rony Maria</MessageTitleName>
-        <MessageTitleDate>12:30 PM</MessageTitleDate>
+        <MessageTitleName>{name}</MessageTitleName>
+        <MessageTitleDate>{time}</MessageTitleDate>
       </MessageTitle>
       <MessageText>{children}</MessageText>
     </MessageBody>
@@ -29,6 +29,7 @@ MessageDisplay.propTypes = {
   children: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
   incoming: PropTypes.bool,
+  time: PropTypes.string,
 };
 MessageDisplay.defaultProps = {
   incoming: false,
@@ -97,7 +98,7 @@ const MessageTitle = styled.div`
 `;
 
 const MessageTitleName = styled.span`
-  color: ${mainBlueColor};
+  color: ${mainButtonColor};
 `;
 
 const MessageTitleDate = styled.span`

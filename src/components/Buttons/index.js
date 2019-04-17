@@ -90,6 +90,13 @@ export const IconButton = ({ type, color }) => {
         </Button>
       );
 
+    case 'addContact':
+      return (
+        <Button>
+          Add
+        </Button>
+      );
+
     default:
       return null;
   }

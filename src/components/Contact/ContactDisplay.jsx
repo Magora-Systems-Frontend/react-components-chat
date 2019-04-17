@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { defaultBorder, lightGrayColor, mediumGrayColor, darkGrayColor } from '../_common/styled';
+import { deleteContact } from '../../actions/contactsActions';
 
-const ContactDisplay = ({ avatar, name, lastMessage, date }) => (
+const ContactDisplay = ({ avatar, name, lastMessage, date, deleteContact, id }) => (
   <ContactWrapper>
     <Avatar src={avatar} />
     <ContactMain>
@@ -12,12 +14,16 @@ const ContactDisplay = ({ avatar, name, lastMessage, date }) => (
     </ContactMain>
     <ContactMeta>
       <ContactLastMessageDate>{date}</ContactLastMessageDate>
-      <DeleteContactButton />
+      <DeleteContactButton onClick={() => deleteContact(id)}/>
     </ContactMeta>
   </ContactWrapper>
 );
 
-export default ContactDisplay;
+const mapDispatchToProps = dispatch => ({
+  deleteContact: id => dispatch(deleteContact(id)),
+});
+
+export default connect(null, mapDispatchToProps)(ContactDisplay);
 
 // lastMessage should be the object
 ContactDisplay.propTypes = {

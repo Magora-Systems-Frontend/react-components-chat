@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { ContactDisplay } from '../Contact';
-import avatar from '../../images/avatar.png';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const ContactsAreaDisplay = () => (
-  <>
-    <ContactDisplay avatar={avatar} name="John Marry" lastMessage="Hello, you" />
-    <ContactDisplay avatar={avatar} name="John Marry" lastMessage="What's up, Joey?" />
-  </>
-);
+class ContactsAreaDisplay extends Component {
+  static propTypes = {
+    contacts: PropTypes.array,
+  };
 
-export default ContactsAreaDisplay;
+  render() {
+    const { contacts } = this.props;
+    const contactsList = contacts.map(item => (
+      <ContactDisplay
+        avatar={item.avatar}
+        name={item.name}
+        lastMessage={item.lastMessage}
+        date={item.date}
+        id={item.id}
+        key={item.id}
+      />));
+    return (
+      <>
+        {contactsList}
+      </>
+    )
+  }
+};
+
+const mapStateToProps = state => ({
+  contacts: state.contacts,
+});
+
+export default connect(mapStateToProps, null)(ContactsAreaDisplay);

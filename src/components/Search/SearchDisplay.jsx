@@ -11,6 +11,7 @@ const SearchDisplay = ({ searchContact, createContact}) => (
     <SearchInput type="text" onChange={(e) => searchContact(e.target.value)} />
     <IconButton type="search" />
     <FilledButton onClick={() => createContact({
+      id: Math.random(),
       avatar: avatar,
       incoming: true,
       name: 'Rony Maria',

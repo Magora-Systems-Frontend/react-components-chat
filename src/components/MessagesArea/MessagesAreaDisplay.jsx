@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { bindActionCreators } from 'redux';
 import { MessageDisplay } from '../Message';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { fetchMessages } from '../../actions/messagesActions';
 
 class MessagesAreaDisplay extends Component {
   static propTypes = {
     messages: PropTypes.array,
+    load: PropTypes.func,
   };
+
+  componentDidMount() {
+    const { load } = this.props;
+    // load();
+  }
 
   render() {
     const { messages } = this.props;
@@ -41,4 +49,8 @@ const mapStateToProps = state => ({
   messages: state.messages,
 });
 
-export default connect(mapStateToProps, null)(MessagesAreaDisplay);
+const mapDispatchToProps = dispatch => ({
+  load: bindActionCreators(fetchMessages, dispatch),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MessagesAreaDisplay);

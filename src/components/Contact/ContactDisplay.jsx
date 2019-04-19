@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import { defaultBorder, lightGrayColor, mediumGrayColor, darkGrayColor } from '../_common/styled';
 import { deleteContact } from '../../actions/contactsActions';
 
-const ContactDisplay = ({ avatar, name, lastMessage, date, deleteContact, id }) => (
-  <ContactWrapper>
+const ContactDisplay = ({ avatar, name, lastMessage, date, deleteContact, id, loadChat }) => (
+  <ContactWrapper onClick={() => loadChat()}>
     <Avatar src={avatar} />
     <ContactMain>
       <ContactName>{name}</ContactName>

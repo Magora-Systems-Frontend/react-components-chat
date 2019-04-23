@@ -1,7 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { defaultBorderRadius, mainButtonColor, secondaryButtonColor } from '../_common/styled';
+import { mainButtonColor, Button, SVG } from './styled';
 
 export const IconButton = ({ type, color }) => {
   switch (type) {
@@ -91,11 +90,7 @@ export const IconButton = ({ type, color }) => {
       );
 
     case 'addContact':
-      return (
-        <Button>
-          Add
-        </Button>
-      );
+      return <Button>Add</Button>;
 
     default:
       return null;
@@ -110,46 +105,3 @@ IconButton.propTypes = {
 IconButton.defaultProps = {
   color: mainButtonColor,
 };
-
-const SVG = styled.svg`
-  width: 2rem;
-  transition: all 0.3s;
-  stroke: ${props => props.color};
-`;
-
-const Button = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 1.5rem;
-  font-size: inherit;
-  border: 0.1rem solid ${mainButtonColor};
-  border-radius: ${defaultBorderRadius};
-  border-top-left-radius: ${props => props.search && 0};
-  border-bottom-left-radius: ${props => props.search && 0};
-  color: #64b5f6;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s;
-  &:not(:last-child) {
-    margin-right: 1rem;
-  }
-
-  &:hover {
-    background: ${mainButtonColor};
-    ${SVG} {
-      stroke: white;
-    }
-  }
-`;
-export const FilledButton = styled(Button)`
-  padding: 0 3rem;
-  margin-left: auto;
-  background: ${mainButtonColor};
-  color: white;
-  text-transform: uppercase;
-  border: none;
-  &:hover {
-    background: ${secondaryButtonColor};
-  }
-`;

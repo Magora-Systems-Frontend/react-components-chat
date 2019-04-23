@@ -1,22 +1,25 @@
-import React from 'react';
-import styled from 'styled-components';
+/* eslint-disable react/prop-types */
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { fetchContactsRequest } from '../actions';
 import { LeftPaneDisplay } from './Leftpane';
 import { RightPaneDisplay } from './RightPane';
 import { GlobalStyle, ChatWrapper } from './_common/styled';
-import { connect } from 'react-redux'
 
-const Chat = () => (
-  <>
-    <GlobalStyle />
-    <ChatWrapper>
-      <LeftPaneDisplay />
-      <RightPaneDisplay />
-    </ChatWrapper>
-  </>
-);
+const Chat = ({ dispatch }) => {
+  useEffect(() => {
+    dispatch(fetchContactsRequest());
+  }, []);
 
-const mapStateToProps = store => {
-  return store
-}
+  return (
+    <>
+      <GlobalStyle />
+      <ChatWrapper>
+        <LeftPaneDisplay />
+        <RightPaneDisplay />
+      </ChatWrapper>
+    </>
+  );
+};
 
-export default connect(mapStateToProps, null)(Chat);
+export default connect()(Chat);

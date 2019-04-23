@@ -1,10 +1,14 @@
-import { contactsReducer } from './contacts';
-import { messagesReducer } from './messages';
-import { replyTextReducer } from './replyText';
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
+import { contacts } from './contacts';
+import { chat } from './chat';
+import { contactId } from './contactId';
+import { loading } from './loading';
+// import { replyTextReducer } from './replyText';
 
-export const rootReducer = combineReducers({
-  contacts: contactsReducer,
-  messages: messagesReducer,
-  replyText: replyTextReducer,
+export default combineReducers({
+  contacts,
+  chat,
+  contactId,
+  loading,
+  // replyText: replyTextReducer,
 });

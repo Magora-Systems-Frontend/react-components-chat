@@ -85,11 +85,13 @@ export const RoundedButton = styled.button`
   align-items: center;
   border-radius: 50%;
   outline: none;
+  width: 2.4rem;
   &:hover {
     background: ${mainButtonColor};
     ${SVG} {
       stroke: white;
     }
+    cursor: pointer;
   }
   &:focus {
     border: 0.1rem solid ${mainButtonColor};

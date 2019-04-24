@@ -14,4 +14,5 @@ export const ConversationStartedAt = styled.div`
 export const ScrollButton = styled.div`
   position: fixed;
   padding-top: 1rem;
+  z-index: 100;
 `;

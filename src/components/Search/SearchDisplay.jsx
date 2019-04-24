@@ -6,11 +6,7 @@ import { SearchWrapper, SearchInput } from './styled';
 // FIX ============================================================
 const SearchDisplay = ({ searchContact, createContact }) => (
   <SearchWrapper>
-    <SearchInput
-      type="text"
-      onChange={e => searchContact(e.target.value)}
-      placeholder="Search..."
-    />
+    <SearchInput type="text" onChange={searchContact} placeholder="Search..." />
     <IconButton type="search" />
     {/* <FilledButton
       onClick={() => createContact({

@@ -5,3 +5,4 @@ export const fetchAPI = async (url) => {
 };
 
 export const formatTime = momentDate => moment(momentDate).format('h:mm a');
+export const formatConversationStartedAt = momentDate => moment(momentDate).format('MMMM D, YYYY');

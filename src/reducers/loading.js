@@ -5,7 +5,7 @@ import {
   FETCH_CONTACTS_SUCCESS,
 } from '../actions';
 
-export function loading(state = {}, action) {
+export default function loading(state = {}, action) {
   switch (action.type) {
     case FETCH_CHAT_REQUEST:
       return { ...state, chatLoading: true };

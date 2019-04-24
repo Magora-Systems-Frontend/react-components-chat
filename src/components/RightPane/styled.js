@@ -6,4 +6,5 @@ export const RightPaneWrapper = styled.div`
   background: ${lightGrayColor};
   border-radius: ${defaultBorderRadius};
   border: ${defaultBorder};
+  position: relative;
 `;

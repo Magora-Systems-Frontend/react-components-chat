@@ -3,10 +3,12 @@ export {
   FETCH_CONTACTS_SUCCESS,
   FETCH_CONTACTS_ERROR,
   SEARCH_CONTACT,
+  DELETE_CONTACT,
   fetchContactsRequest,
   fetchContactsSuccess,
   fetchContactsError,
   searchContact,
+  deleteContact,
 } from './contacts';
 
 export {

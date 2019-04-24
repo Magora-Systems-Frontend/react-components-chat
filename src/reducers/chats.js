@@ -1,7 +1,7 @@
 import { SEND_MESSAGE, SET_MESSAGES } from '../actions/chats';
 import avatar from '../images/avatar.jpg';
 
-export function chats(state = [], action) {
+export default function chats(state = [], action) {
   switch (action.type) {
     case SET_MESSAGES:
       return action.payload;

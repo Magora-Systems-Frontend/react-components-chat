@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MessageDisplay } from '../Message';
-import { MessagesWrapper } from './styled';
+import { MessagesWrapper, ConversationStartedAt, ScrollButton } from './styled';
 import { TitleWrapper } from '../_common/styled';
+import { IconButton } from '../_common/IconButton';
 import myAvatar from '../../images/avatar.jpg';
 import Loader from '../_common/Loader';
+import { formatConversationStartedAt } from '../../helpers';
 
 const MessagesAreaDisplay = ({ contact, chat, loading }) => (
   <>
@@ -13,17 +15,26 @@ const MessagesAreaDisplay = ({ contact, chat, loading }) => (
       {loading ? (
         <Loader centered />
       ) : (
-        chat
-        && chat.map(({ incoming, text, date }) => (
-          <MessageDisplay
-            incoming={incoming}
-            text={text}
-            date={date}
-            name={incoming ? contact.name : 'magora-systems.com'}
-            avatar={incoming ? contact.avatar : myAvatar}
-            key={date}
-          />
-        ))
+        chat && (
+        <>
+          <ScrollButton>
+            <IconButton type="scroll" />
+          </ScrollButton>
+          <ConversationStartedAt>
+            {`Conversation started at ${formatConversationStartedAt(chat[0].date)}`}
+          </ConversationStartedAt>
+          {chat.map(({ incoming, text, date }) => (
+            <MessageDisplay
+              incoming={incoming}
+              text={text}
+              date={date}
+              name={incoming ? contact.name : 'magora-systems.com'}
+              avatar={incoming ? contact.avatar : myAvatar}
+              key={date}
+            />
+          ))}
+        </>
+        )
       )}
     </MessagesWrapper>
   </>

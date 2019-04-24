@@ -4,7 +4,6 @@ import {
   defaultBorderRadius,
   mainButtonColor,
   borderColor,
-  lightGrayColor,
   mediumGrayColor,
 } from '../_common/styled';
 
@@ -47,6 +46,7 @@ export const MessageWrapper = styled.div`
   }
 
   ${MessageBody} {
+    background: white;
     &::before {
       ${props => (props.isIncoming ? 'left: -1.1rem' : 'right: -1.1rem')};
       ${props => props.isIncoming
@@ -55,9 +55,7 @@ export const MessageWrapper = styled.div`
     }
     &::after {
       ${props => (props.isIncoming ? 'left: -0.9rem' : 'right: -0.9rem')};
-      ${props => props.isIncoming
-    ? `border-right: 1rem solid ${lightGrayColor}`
-    : `border-left: 1rem solid ${lightGrayColor}`};
+      ${props => props.isIncoming ? 'border-right: 1rem solid white' : 'border-left: 1rem solid white'};
     }
   }
 `;

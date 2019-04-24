@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ContactDisplay from './ContactDisplay';
-import { selectContactId, fetchChatRequest } from '../../actions';
+import { selectContactId, fetchChatRequest, deleteContact } from '../../actions';
 import { contactIdSelector } from '../../selectors';
 
 function mapStateToProps(state) {
@@ -15,6 +15,9 @@ function mapDispatchToProps(dispatch) {
     },
     fetchChatRequest(id) {
       dispatch(fetchChatRequest(id));
+    },
+    deleteContact(id) {
+      dispatch(deleteContact(id));
     },
   };
 }

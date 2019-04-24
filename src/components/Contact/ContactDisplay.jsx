@@ -13,11 +13,19 @@ import {
 import { formatTime } from '../../helpers';
 
 const ContactDisplay = ({
-  contactId, contact, selectContactId, fetchChatRequest,
+  contactId,
+  contact,
+  selectContactId,
+  fetchChatRequest,
+  deleteContact,
 }) => {
   const handleSelectContact = (id) => {
     selectContactId(id);
     fetchChatRequest(id);
+  };
+  const handleDeleteContact = (e, id) => {
+    deleteContact(id);
+    e.stopPropagation();
   };
   return (
     <ContactWrapper
@@ -31,7 +39,7 @@ const ContactDisplay = ({
       </ContactMain>
       <ContactMeta>
         <ContactLastMessageDate>{formatTime(contact.lastMessage.date)}</ContactLastMessageDate>
-        <DeleteContactButton />
+        <DeleteContactButton onClick={e => handleDeleteContact(e, contact.id)} />
       </ContactMeta>
     </ContactWrapper>
   );
@@ -44,6 +52,7 @@ ContactDisplay.propTypes = {
   contact: PropTypes.object,
   selectContactId: PropTypes.func,
   fetchChatRequest: PropTypes.func,
+  deleteContact: PropTypes.func,
 };
 
 ContactDisplay.defaultProps = {

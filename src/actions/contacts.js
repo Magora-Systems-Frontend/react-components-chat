@@ -31,7 +31,6 @@ export function searchContact(name) {
     payload: name,
   };
 }
-//----------------
 
 export function deleteContact(id) {
   return {
@@ -39,7 +38,7 @@ export function deleteContact(id) {
     payload: id,
   };
 }
-
+//----------------
 export function createContact(contact) {
   return {
     type: CREATE_CONTACT,

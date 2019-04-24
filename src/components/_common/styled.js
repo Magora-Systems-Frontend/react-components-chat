@@ -78,6 +78,24 @@ export const Button = styled.button`
     }
   }
 `;
+
+export const RoundedButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  outline: none;
+  &:hover {
+    background: ${mainButtonColor};
+    ${SVG} {
+      stroke: white;
+    }
+  }
+  &:focus {
+    border: 0.1rem solid ${mainButtonColor};
+  }
+`;
+
 export const FilledButton = styled(Button)`
   padding: 0 3rem;
   margin-left: auto;

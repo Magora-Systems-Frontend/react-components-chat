@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import ContactsAreaDisplay from './ContactsAreaDisplay';
-import { contactsSelector } from '../../selectors';
+import { filteredContactsSelector } from '../../selectors';
 
 function mapStateToProps(state) {
   return {
-    contacts: contactsSelector(state),
+    contacts: filteredContactsSelector(state),
     loading: state.loading.contactsLoading,
   };
 }

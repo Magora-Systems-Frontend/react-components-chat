@@ -10,6 +10,7 @@ import {
   ContactLastMessageDate,
   DeleteContactButton,
 } from './styled';
+import { formatTime } from '../../helpers';
 
 const ContactDisplay = ({
   contactId, contact, selectContactId, fetchChatRequest,
@@ -26,10 +27,10 @@ const ContactDisplay = ({
       <Avatar src={contact.avatar} />
       <ContactMain>
         <ContactName>{contact.name}</ContactName>
-        <ContactLastMessage>Test last Message</ContactLastMessage>
+        <ContactLastMessage>{contact.lastMessage.text}</ContactLastMessage>
       </ContactMain>
       <ContactMeta>
-        <ContactLastMessageDate>99:99 pm</ContactLastMessageDate>
+        <ContactLastMessageDate>{formatTime(contact.lastMessage.date)}</ContactLastMessageDate>
         <DeleteContactButton />
       </ContactMeta>
     </ContactWrapper>

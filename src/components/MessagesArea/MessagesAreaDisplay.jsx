@@ -40,7 +40,7 @@ MessagesAreaDisplay.propTypes = {
     PropTypes.shape({
       incoming: PropTypes.bool.isRequired,
       text: PropTypes.string.isRequired,
-      date: PropTypes.number.isRequired,
+      date: PropTypes.string.isRequired,
     })
   ),
   loading: PropTypes.bool,

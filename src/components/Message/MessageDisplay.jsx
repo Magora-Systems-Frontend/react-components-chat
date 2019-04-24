@@ -9,6 +9,7 @@ import {
   MessageTitleDate,
   MessageText,
 } from './styled';
+import { formatTime } from '../../helpers';
 
 const MessageDisplay = ({
   incoming, text, date, name, avatar,
@@ -18,7 +19,7 @@ const MessageDisplay = ({
     <MessageBody>
       <MessageTitle>
         <MessageTitleName>{name}</MessageTitleName>
-        <MessageTitleDate>{date}</MessageTitleDate>
+        <MessageTitleDate>{formatTime(date).toUpperCase()}</MessageTitleDate>
       </MessageTitle>
       <MessageText>{text}</MessageText>
     </MessageBody>
@@ -30,7 +31,7 @@ export default MessageDisplay;
 MessageDisplay.propTypes = {
   incoming: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired,
-  date: PropTypes.number.isRequired,
+  date: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
 };
